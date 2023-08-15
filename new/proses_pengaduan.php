@@ -15,7 +15,10 @@ $asal_foto = $_FILES['foto']['tmp_name'];
 $tanggal = date('Y-m-d');
 
 $koneksi->query("insert into pengaduan values('','$tanggal','1','$isi','$nama_foto','0')");
+
+move_uploaded_file($asal_foto, "image/$nama_foto");
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="css/login.css">
 </head>
+
 <body>
     <div class="container">
         <h1>Login</h1>
@@ -22,16 +24,15 @@
                 <input type="checkbox" name="rememberme" id="rememberme">
                 <label for="rememberme">Remember Me</label>
                 <button type="submit" name="" class="btn mt-3 btn-block btn-grad" style="color:white;font-weight:bold;">Login</button>
-                
-        </div>
+
+            </div>
         </form>
         <div class="text-center">
             <a href="#">Lupa kata sandi?</a> atau <a href="#">Daftar</a>
         </div>
-      </div>
+    </div>
     </div>
 
 </body>
-</html>
 
-         
+</html>

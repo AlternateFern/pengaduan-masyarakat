@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 15, 2023 at 04:39 AM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.2.0
+-- Waktu pembuatan: 23 Agu 2023 pada 06.42
+-- Versi server: 10.4.24-MariaDB
+-- Versi PHP: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `masyarakat`
+-- Struktur dari tabel `masyarakat`
 --
 
 CREATE TABLE `masyarakat` (
@@ -33,20 +33,20 @@ CREATE TABLE `masyarakat` (
   `username` varchar(25) NOT NULL,
   `password` varchar(32) NOT NULL,
   `telp` varchar(13) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `masyarakat`
+-- Dumping data untuk tabel `masyarakat`
 --
 
 INSERT INTO `masyarakat` (`nik`, `nama`, `username`, `password`, `telp`) VALUES
-('1', 'daffa', 'daf', '123', '085465467876'),
-('2', 'arian', 'lemn', '456', '085437572412');
+('1111', 'daffa', 'daf', '123', '085465467876'),
+('1112', 'arian', 'lemn', '456', '085437572412');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pengaduan`
+-- Struktur dari tabel `pengaduan`
 --
 
 CREATE TABLE `pengaduan` (
@@ -56,19 +56,20 @@ CREATE TABLE `pengaduan` (
   `isi_laporan` text NOT NULL,
   `foto` varchar(255) NOT NULL,
   `status` enum('0','proses','selesai') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `pengaduan`
+-- Dumping data untuk tabel `pengaduan`
 --
 
 INSERT INTO `pengaduan` (`id_pengaduan`, `tgl_pengaduan`, `nik`, `isi_laporan`, `foto`, `status`) VALUES
-(1, '2023-08-15', '1', 'Gempa', '', '0');
+(10, '2023-08-23', '1111', 'ada gempa bumi', 'gempa.jpg', '0'),
+(12, '2023-08-23', '1112', 'kebakaran rumah', 'kebakaranrumah.png', '0');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `petugas`
+-- Struktur dari tabel `petugas`
 --
 
 CREATE TABLE `petugas` (
@@ -78,12 +79,12 @@ CREATE TABLE `petugas` (
   `password` varchar(32) NOT NULL,
   `telp` varchar(13) NOT NULL,
   `level` enum('admin','petugas') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tanggapan`
+-- Struktur dari tabel `tanggapan`
 --
 
 CREATE TABLE `tanggapan` (
@@ -92,33 +93,33 @@ CREATE TABLE `tanggapan` (
   `tgl_pembuatan` date NOT NULL,
   `tanggapan` text NOT NULL,
   `id_petugas` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `masyarakat`
+-- Indeks untuk tabel `masyarakat`
 --
 ALTER TABLE `masyarakat`
   ADD PRIMARY KEY (`nik`);
 
 --
--- Indexes for table `pengaduan`
+-- Indeks untuk tabel `pengaduan`
 --
 ALTER TABLE `pengaduan`
   ADD PRIMARY KEY (`id_pengaduan`),
   ADD UNIQUE KEY `nik` (`nik`);
 
 --
--- Indexes for table `petugas`
+-- Indeks untuk tabel `petugas`
 --
 ALTER TABLE `petugas`
   ADD PRIMARY KEY (`id_petugas`);
 
 --
--- Indexes for table `tanggapan`
+-- Indeks untuk tabel `tanggapan`
 --
 ALTER TABLE `tanggapan`
   ADD PRIMARY KEY (`id_tanggapan`),
@@ -126,39 +127,39 @@ ALTER TABLE `tanggapan`
   ADD UNIQUE KEY `id_pengaduan` (`id_pengaduan`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `pengaduan`
+-- AUTO_INCREMENT untuk tabel `pengaduan`
 --
 ALTER TABLE `pengaduan`
-  MODIFY `id_pengaduan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_pengaduan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT for table `petugas`
+-- AUTO_INCREMENT untuk tabel `petugas`
 --
 ALTER TABLE `petugas`
   MODIFY `id_petugas` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `tanggapan`
+-- AUTO_INCREMENT untuk tabel `tanggapan`
 --
 ALTER TABLE `tanggapan`
   MODIFY `id_tanggapan` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- Constraints for dumped tables
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
 
 --
--- Constraints for table `pengaduan`
+-- Ketidakleluasaan untuk tabel `pengaduan`
 --
 ALTER TABLE `pengaduan`
   ADD CONSTRAINT `pengaduan_ibfk_1` FOREIGN KEY (`nik`) REFERENCES `masyarakat` (`nik`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `tanggapan`
+-- Ketidakleluasaan untuk tabel `tanggapan`
 --
 ALTER TABLE `tanggapan`
   ADD CONSTRAINT `tanggapan_ibfk_1` FOREIGN KEY (`id_pengaduan`) REFERENCES `pengaduan` (`id_pengaduan`) ON DELETE CASCADE ON UPDATE CASCADE,

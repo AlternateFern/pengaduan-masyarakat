@@ -8,9 +8,6 @@
       <li class="nav-item">
         <a class="nav-link <?php if ($activepage == "isi_pengaduan") { ?> active <?php } ?>" aria-current="page" href="isi_pengaduan.php">Buat Laporan</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link aria-current="page" href="logout.php">Logout</a>
-      </li>
       <li class="nav-item" style="margin-right: 30px;">
         <a class="nav-link <?php if ($activepage == "profile") { ?> active <?php } ?>" href="profile.php">Profil</a>
       </li>

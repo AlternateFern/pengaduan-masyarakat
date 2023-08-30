@@ -4,6 +4,8 @@ if (isset($_SESSION["username"])) {
     $_SESSION['password'] == $_SESSION['password'];
     header("Location:index.php");
 }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -18,18 +20,25 @@ if (isset($_SESSION["username"])) {
 </head>
 
 <body>
+
     <div class="container">
         <h1>Login</h1>
-        <h3>Selamat datang kembali!</h3>
+        <h3><?php
+            if (isset($_SESSION['error'])) {
+                echo $_SESSION['error'];
+                unset($_SESSION['error']);
+            } else { ?>
+                Selamat datang kembali! <?php } ?>
+        </h3>
         <form class="p-3 mt-3" action="proses/proses_login.php" method="POST">
             <div class="form-group">
 
-                <label for="username">Username</label>
                 <input type="text" class="form-control" name="username" id="username" placeholder="Username">
                 <div class="bar"></div>
-                <label for="username">Password</label>
-                <input type="password" class="form-control" name="password" id="pwd" placeholder="Password">
-                <div class="bar"></div>
+                <div class="form-inline">
+                    <input type="password" class="form-control" name="password" id="password" placeholder="Password" style="width:90%;"><button class="btn btn-sm shadow-none" onclick="password()" style="margin-top: 20px; border-color:transparent; background-color:transparent; border-width:0px;"><img src="img/eye.png" width="30px" height="30px"></button>
+                </div>
+                <div class="bar" style="width:90%;"></div>
                 <input type="checkbox" name="rememberme" id="rememberme">
                 <label for="rememberme">Remember Me</label>
                 <button type="submit" name="" class="btn mt-3 btn-block btn-grad" style="color:white;font-weight:bold;">Login</button>
@@ -37,11 +46,21 @@ if (isset($_SESSION["username"])) {
             </div>
         </form>
         <div class="text-center">
-            <a href="#">Lupa kata sandi?</a> atau <a href="#">Daftar</a>
+            <a href="#">Lupa kata sandi?</a> atau <a href="register.php">Daftar</a>
         </div>
     </div>
     </div>
 
+    <script>
+        function password() {
+            var x = document.getElementById("password");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+    </script>
 </body>
 
 </html>

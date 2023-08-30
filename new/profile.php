@@ -1,6 +1,10 @@
 <?php
 session_start();
 require "proses/koneksi.php";
+if (!isset($_SESSION["username"])) {
+  $_SESSION['password'] == $_SESSION['password'];
+  header("Location:login.php");
+}
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +23,8 @@ require "proses/koneksi.php";
     <?php $activepage = "profile";
     require 'navbar.php'; ?>
     <div class="container" style="margin:auto; margin-top: 70px;">
-    <p style="text-align:center;"> Username : <?php echo $_SESSION['username'];?> <br> Nik : <?php echo $_SESSION['nik'];?> </p>
+    <p> Username : <?php echo $_SESSION['username'];?> <br> Nik : <?php echo $_SESSION['nik'];?> </p>
+    <a href="logout.php" class="btn btn-sm btn-danger">Logout</a>
     </div>
 </body>
 

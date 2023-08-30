@@ -1,3 +1,11 @@
+<?php
+require "proses/koneksi.php";
+session_start();
+if (!isset($_SESSION["username"])) {
+  $_SESSION['password'] == $_SESSION['password'];
+  header("Location:login.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 

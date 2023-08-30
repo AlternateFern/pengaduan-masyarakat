@@ -7,20 +7,16 @@
 
     $query = $koneksi->query("SELECT * FROM masyarakat WHERE username='$username' AND password='$password'");
     $data = $query->fetch();
-    if($data!=(false))
+    if($data > 0)
     {
         $_SESSION["username"] = $username;
         $_SESSION["password"] = $password;
         $_SESSION["nik"] = $data["nik"];
         header("Location:../index.php") ;
     }
-    // if($dataArray){
-    //     $_SESSION['username'] = $username;
-    //     $_SESSION['password'] = $password;
-    //     header("tampilan.php");
-    // }
+
     else{
         header("Location:../login.php");
-        echo "<script>alert('Maaf Data Yang Anda Masukan Salah. Silahkan Coba Lagi!')</script>";
+        $_SESSION['error'] = 'Username atau Password Salah!';
     }
     ?>
